@@ -47,6 +47,7 @@ export default function Add() {
   const addTask = async () => {
     if (title !== "" && description !== "") {
       try {
+        setWorkSection("1");
         const res = await CreateListMutation({
           variables: {
             input: {
