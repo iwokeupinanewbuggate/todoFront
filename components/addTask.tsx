@@ -61,7 +61,10 @@ export default function Add() {
         setTitle("");
         setDescription("");
         setWorkSection("");
-        toast.success("Successfully posted");
+        toast.success("Successfully posted", {
+          position: "top-left",
+          theme: "dark",
+        });
       } catch (err) {
         console.log(err);
       }

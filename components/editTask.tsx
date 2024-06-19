@@ -8,6 +8,7 @@ import {
   useGetListQuery,
 } from "@/generated";
 import { EditIcon } from "./icons/edit";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -56,22 +57,33 @@ export default function Edit({
   const { refetch } = useGetListQuery();
   const [editTaskMutation, { data, loading, error }] = useEditTaskMutation();
   const editTask = async () => {
-    try {
-      const res = await editTaskMutation({
-        variables: {
-          input: {
-            id: id,
-            title: EditTitle,
-            description: Editdescription,
-            workSection: EditWorkSection,
+    if (EditTitle !== "" && Editdescription !== "") {
+      try {
+        const res = await editTaskMutation({
+          variables: {
+            input: {
+              id: id,
+              title: EditTitle,
+              description: Editdescription,
+              workSection: EditWorkSection,
+            },
           },
-        },
+        });
+        toast.success("Successfully posted", {
+          position: "top-left",
+          theme: "dark",
+        });
+        handleClose();
+        refetch();
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      toast.error("Fill in all the input", {
+        position: "top-center",
+        theme: "dark",
+        closeOnClick: true,
       });
-      console.log(res);
-      handleClose();
-      refetch();
-    } catch (err) {
-      console.log(err);
     }
   };
   return (
