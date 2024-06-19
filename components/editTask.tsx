@@ -69,7 +69,7 @@ export default function Edit({
             },
           },
         });
-        toast.success("Successfully posted", {
+        toast.success("Successfully Edited", {
           position: "top-left",
           theme: "dark",
         });
