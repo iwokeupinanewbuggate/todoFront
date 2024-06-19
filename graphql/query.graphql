@@ -1,0 +1,51 @@
+query GetList {
+  getList {
+    _id
+    title
+    description
+    workSection
+    status
+    createdAt
+  }
+}
+mutation EditTask($input: editTaskInfo!) {
+  editTask(input: $input) {
+    _id
+    title
+    description
+    workSection
+    status
+    createdAt
+  }
+}
+mutation DeleteTask($deleteTaskId: ID!) {
+  deleteTask(id: $deleteTaskId) {
+    _id
+    title
+    description
+    workSection
+    status
+    createdAt
+  }
+}
+mutation CreateList($input: listInfo!) {
+  createList(input: $input) {
+    _id
+    title
+    description
+    workSection
+    status
+    createdAt
+  }
+}
+
+mutation UptadeStatus($input: ChangeStatus!) {
+  uptadeStatus(input: $input) {
+    _id
+    title
+    description
+    workSection
+    status
+    createdAt
+  }
+}
